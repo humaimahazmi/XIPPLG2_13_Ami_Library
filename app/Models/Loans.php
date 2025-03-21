@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class Loans extends Model
 {
     protected $fillable = [
-        'title',
-        'writer',
+        'book_id',
         'user_id',
-        'category_id',
-        'publisher',
-        'year'
+        'loan_date',
+        'return_date',
+        'status'
     ];
 
     public function user(): BelongsTo
@@ -22,5 +21,9 @@ class Book extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(related: Category::class);
+    }
+    public function bookr(): BelongsTo
+    {
+        return $this->belongsTo(related: Book::class);
     }
 }
